@@ -1,0 +1,137 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --Purple: hsl(259, 100%, 65%);
+  --Light-red: hsl(0, 100%, 67%);
+  --White: hsl(0, 0%, 100%);
+  --Off-white: hsl(0, 0%, 94%);
+  --Light-grey: hsl(0, 0%, 86%);
+  --Smokey-grey: hsl(0, 1%, 44%);
+  --Off-black: hsl(0, 0%, 8%);
+}
+
+html {
+  font-family: 'Poppins', sans-serif;
+  font-size: 62.5%;
+}
+
+.main {
+  position: relative;
+  width: 100%;
+  min-width: 350px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--Light-grey);
+  padding: 0 15px;
+}
+
+.attribution {
+  position: absolute;
+  bottom: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  padding: 50px 20px;
+  background-color: var(--White);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 115px;
+}
+
+/* Estilos del contenedor de la fecha (inicio) */
+.container__dates {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: auto;
+}
+
+.container__dates div {
+  display: flex;
+  flex-direction: column;
+}
+
+.container__dates label {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--Smokey-grey);
+}
+
+.container__dates input {
+  width: 90px;
+  height: 45px;
+  padding-left: 15px;
+  outline: none;
+  border: 1px solid var(--Light-grey);
+  border-radius: 5px;
+}
+/* Estilos del contenedor de la fecha (final) */
+
+/* ---------------------------- */
+
+/* Contenedor del boton y linea (inicio) */
+.container__button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100px;
+  margin: 20px 0;
+}
+
+.line {
+  width: 100%;
+  height: 1.5px;
+  background: var(--Light-grey);
+}
+
+.button {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  background-color: var(--Purple);
+  outline: none;
+  border: none;
+  border-radius: 100%;
+  align-self: center;
+}
+
+.button img {
+  width: 25px;
+}
+/* Contenedor del boton y linea (final) */
+
+/* ---------------------------- */
+
+/* Contenedor de la informacion obtenida (inicio) */
+.container__info {
+  width: 100%;
+  height: auto;
+}
+
+.container__info p {
+  font-size: 4rem;
+  font-weight: 800;
+  font-style: italic;
+}
+
+.number-date {
+  color: var(--Purple);
+}
+/* Contenedor de la informacion obtenida (final) */
