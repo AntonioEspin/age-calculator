@@ -61,59 +61,94 @@ function showAge () {
 
   const [ageDay, ageMonth, ageYear] = getExactAge(getDayValue, getMonthValue, getYearValue);
   
-  const isDayValid = getDayValue >= 1 && getDayValue <= 31;
-  const isMonthValid = getMonthValue >= 1 && getMonthValue <= 12;
-  const isYearValid = getYearValue >= 1900 && getYearValue <= getCurrentDate()[2];
+  // Elimina los mensajes de error
+  const errorMessages = document.querySelectorAll('.error-message');
+  errorMessages.forEach(message => message.remove());
 
-  // Elimino los mensajes de error
-    const errorMessages = document.querySelectorAll('.error-message');
-    errorMessages.forEach(message => message.remove());
-  
-  if (isDayValid && isMonthValid && isYearValid) { // Validamos si ingresaron valores correctos en inputs
-    
-    // Obtengo los elementos de DOM a modificar
-    const numberDay = document.querySelector('.days span');
-    const numberMonth = document.querySelector('.months span');
-    const numberYear = document.querySelector('.years span');
-    // Modifico el contenido de los elementos
-    numberDay.textContent = `${ageDay}`
-    numberMonth.textContent = `${ageMonth}`
-    numberYear.textContent = `${ageYear}`
+  let hasError = false;
 
-    // Remuevo los estilos de error
-    day.classList.remove('error-input');
-    month.classList.remove('error-input');
-    year.classList.remove('error-input');
+  if (isNaN(getDayValue) || getDayValue < 1 || getDayValue > 31) {
 
-    // Captura los elementos label de los inputs y retira los estilos de error
-    const labelsDates = document.querySelectorAll('.container__dates label');
-    labelsDates.forEach(label => label.classList.remove('error-label'));
-
-  } else { // si no se cumple la condición, se muestra el error haciendo los siguientes cambios
+    const messageValidDate = 'Must be a valid date';
+    const messageFieldRequired = 'This field is required';
     day.classList.add('error-input');
+
+    const labelDay = document.querySelector('#label-day');
+    labelDay.classList.add('error-label');
+
+    getMessageError(day, messageValidDate, messageFieldRequired, getDayValue);
+
+    hasError = true;
+
+  } else {
+    const numberDay = document.querySelector('.days span');
+    numberDay.textContent = `${ageDay}`;
+    day.classList.remove('error-input');
+
+    // Captura el elemento label de los inputs y retira los estilos de error
+    const labelDay = document.querySelector('#label-day');
+    labelDay.classList.remove('error-label');
+    
+  }
+
+
+  if (isNaN(getMonthValue) || getMonthValue < 1 || getMonthValue > 12) {
+
+    const messageValidDate = 'Must be a valid date';
+    const messageFieldRequired = 'This field is required';
     month.classList.add('error-input');
+
+    const labelMonth = document.querySelector('#label-month');
+    labelMonth.classList.add('error-label');
+
+    getMessageError(month, messageValidDate, messageFieldRequired, getMonthValue);
+
+    hasError = true;
+
+  } else {
+    const numberMonth = document.querySelector('.months span');
+    numberMonth.textContent = `${ageMonth}`;
+    month.classList.remove('error-input');
+
+    // Captura el elemento label de los inputs y retira los estilos de error
+    const labelMonth = document.querySelector('#label-month');
+    labelMonth.classList.remove('error-label');
+  }
+
+
+  if (isNaN(getYearValue) || getYearValue < 1 || getYearValue > getCurrentDate()[2]) {
+
+    const messageValidDate = 'Must be a valid date';
+    const messageFieldRequired = 'This field is required';
     year.classList.add('error-input');
 
-    const message = 'Must be a valid date'
-    
-    // Captura los elementos label de los inputs y coloca los estilos de error
-    const labelsDates = document.querySelectorAll('.container__dates label');
-    labelsDates.forEach(label => label.classList.add('error-label'));
+    const labelYear = document.querySelector('#label-year');
+    labelYear.classList.add('error-label');
 
-    // const errorMessages = document.querySelectorAll('.error-message');
-    // errorMessages.forEach(message => message.remove());
+    getMessageError(year, messageValidDate, messageFieldRequired, getYearValue);
 
-    getErrorsMessages(message); //Esta funcion agrega el mensaje de error
-  };
+    hasError = true;
+
+  } else {
+    const numberYear = document.querySelector('.years span');
+    numberYear.textContent = `${ageYear}`;
+    year.classList.remove('error-input');
+
+    // Captura el elemento label de los inputs y retira los estilos de error
+    const labelYear = document.querySelector('#label-year');
+    labelYear.classList.remove('error-label');
+  }
+
+  // Actualiza los valores solo si hay errores
+  if (!!hasError) {
+    const containerInfo = document.querySelectorAll('.container__info p span');
+    containerInfo.forEach(info => info.textContent = '--');
+  }
 };
 
-// Funcion que crea el mensaje de error
-function getErrorsMessages (message) {
-  const MainContainer = document.querySelectorAll('.container__dates div');
-  MainContainer.forEach(container => {
-    const errorMessage = document.createElement('p');
-    errorMessage.classList.add('error-message');
-    errorMessage.textContent = message
-    container.appendChild(errorMessage);
-  });
+function getMessageError (element, validDate, fieldRequired, value) {
+  const messageError = document.createElement('p');
+  messageError.classList.add('error-message');
+  messageError.textContent = value === '' ? fieldRequired: validDate;
+  element.parentNode.appendChild(messageError);
 };
