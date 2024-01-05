@@ -19,6 +19,8 @@ html {
   font-size: 62.5%;
 }
 
+/* Empieza los estilos del programa */
+
 .main {
   position: relative;
   width: 100%;
@@ -135,3 +137,18 @@ html {
   color: var(--Purple);
 }
 /* Contenedor de la informacion obtenida (final) */
+
+/* Estilos de los errores */
+.container__dates input.error-input {
+  border: 1px solid var(--Light-red);
+}
+
+.container__dates label.error-label {
+  color: var(--Light-red);
+}
+
+.error-message {
+  color: var(--Light-red);
+  font-size: 0.8rem;
+  margin-top: 5px;
+}
