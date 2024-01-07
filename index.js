@@ -83,9 +83,11 @@ function showAge () {
   } else {
     const numberDay = document.querySelector('.days span');
     numberDay.classList.remove('scale-in-center');
-    setTimeout(()=> numberDay.classList.add('scale-in-center'),10);
+    setTimeout(()=> {
+      numberDay.classList.add('scale-in-center');
+      numberDay.textContent = `${ageDay}`;
+    },10);
     
-    numberDay.textContent = `${ageDay}`;
     day.classList.remove('error-input');
 
     // Captura el elemento label de los inputs y retira los estilos de error
@@ -111,9 +113,11 @@ function showAge () {
   } else {
     const numberMonth = document.querySelector('.months span');
     numberMonth.classList.remove('scale-in-center');
-    setTimeout(()=> numberMonth.classList.add('scale-in-center'), 10);
+    setTimeout(()=> {
+      numberMonth.classList.add('scale-in-center')
+      numberMonth.textContent = `${ageMonth}`;
+    }, 10);
     
-    numberMonth.textContent = `${ageMonth}`;
     month.classList.remove('error-input');
 
     // Captura el elemento label de los inputs y retira los estilos de error
@@ -138,9 +142,11 @@ function showAge () {
   } else {
     const numberYear = document.querySelector('.years span');
     numberYear.classList.remove('scale-in-center');
-    setTimeout(()=> numberYear.classList.add('scale-in-center'), 10);
+    setTimeout(()=> {
+      numberYear.classList.add('scale-in-center')
+      numberYear.textContent = `${ageYear}`;
+    }, 10);
     
-    numberYear.textContent = `${ageYear}`;
     year.classList.remove('error-input');
 
     // Captura el elemento label de los inputs y retira los estilos de error

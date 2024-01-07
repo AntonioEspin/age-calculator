@@ -74,10 +74,18 @@ html {
 .container__dates input {
   width: 90px;
   height: 45px;
+  font-size: 3.2rem;
+  font-weight: 700;
   padding-left: 15px;
   outline: none;
   border: 1px solid var(--Light-grey);
   border-radius: 5px;
+}
+
+.container__dates input::placeholder {
+  color: var(--Smokey-grey);
+  font-size: 1.8rem;
+  font-weight: 800;
 }
 /* Estilos del contenedor de la fecha (final) */
 
@@ -134,7 +142,7 @@ html {
 }
 
 .number-date {
-  width: 50px;
+  width: 70px;
   display: inline-block;
   color: var(--Purple);
 }
@@ -199,5 +207,29 @@ html {
     -webkit-transform: scale(1);
     transform: scale(1);
     opacity: 1;
+  }
+}
+/* ------------------------ */
+
+/* media queries */
+@media(min-width: 800px) {
+  .container__dates {
+    justify-content: flex-start;
+  }
+
+  .container__dates div {
+    margin-right: 20px;
+  }
+
+  .container__dates input {
+    width: 110px;
+  }
+
+  .button {
+    right: 0;
+  }
+
+  .container {
+    padding: 50px 35px;
   }
 }
