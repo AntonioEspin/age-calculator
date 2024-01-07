@@ -82,6 +82,9 @@ function showAge () {
 
   } else {
     const numberDay = document.querySelector('.days span');
+    numberDay.classList.remove('scale-in-center');
+    setTimeout(()=> numberDay.classList.add('scale-in-center'),10);
+    
     numberDay.textContent = `${ageDay}`;
     day.classList.remove('error-input');
 
@@ -107,6 +110,9 @@ function showAge () {
 
   } else {
     const numberMonth = document.querySelector('.months span');
+    numberMonth.classList.remove('scale-in-center');
+    setTimeout(()=> numberMonth.classList.add('scale-in-center'), 10);
+    
     numberMonth.textContent = `${ageMonth}`;
     month.classList.remove('error-input');
 
@@ -131,6 +137,9 @@ function showAge () {
 
   } else {
     const numberYear = document.querySelector('.years span');
+    numberYear.classList.remove('scale-in-center');
+    setTimeout(()=> numberYear.classList.add('scale-in-center'), 10);
+    
     numberYear.textContent = `${ageYear}`;
     year.classList.remove('error-input');
 
